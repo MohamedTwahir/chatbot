@@ -39,3 +39,10 @@ def returnname():
         mainmenu()
     else:
         print("Wow Such a cool name", name, "!")
+        
+def instructions():
+    print('''I am your virtual assistant with wide feature set:\n
+          I can find information about something you want to learn\n
+          Retrieve current local weather\n
+          Play an interactive story for you.''')
+    print("Interracting with me is queit simple you just have to enter the number of the action you want me to do from the following list")
