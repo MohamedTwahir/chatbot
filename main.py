@@ -24,3 +24,18 @@ answer_C = ["C", "c", "C.", "c."]
 yes = ["Y", "y", "Yes", "yes", "YES"]
 no = ["N", "n", "No", "no", "NO"]
 
+# Useful functions to be used in the program
+ # A function to return the user name
+def returnname():
+    print("What is your name buddy?(Enter only a single name)")
+    global name
+    name = input(">>>")
+    if name == "exit":
+        print("Ahsante Sana!Karibu Tena")
+        sys.exit()
+    elif name == "help":
+        instructions()
+    elif name == "return":
+        mainmenu()
+    else:
+        print("Wow Such a cool name", name, "!")
