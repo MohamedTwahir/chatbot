@@ -46,3 +46,36 @@ def instructions():
           Retrieve current local weather\n
           Play an interactive story for you.''')
     print("Interracting with me is queit simple you just have to enter the number of the action you want me to do from the following list")
+    
+def main_menu_validate(x):
+    if x == "1":
+        wikichat()
+    elif x == "2":
+        weatherchat()
+    elif x == "3":
+        intro()
+    elif x == "exit":
+        print("Ahsante! Kwaheri")
+        sys.exit()
+    elif x == "help":
+        instructions()
+        time.sleep(1)
+        mainmenu()
+    elif x == "return":
+        mainmenu()
+    else:
+        return False
+    
+
+def mainmenu():
+    print("\n What can i assist you with? Type the choice that corresponds to the action")
+    time.sleep(1)
+    print('''[1] Find a topic on wikipedia that you want to learn about\n
+          [2] Retrieve the current Weather Condition in your location\n
+          [3] Play an Interactive story mode\n''')
+    x = input(">>>")
+    main_menu_result == main_menu_validate(x)
+    if main_menu_result == False:
+        print("Please enter a valid input:")
+        x = input(">>>")
+        main_menu_result = main_menu_validate(x)
