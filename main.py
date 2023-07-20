@@ -76,6 +76,60 @@ def mainmenu():
     x = input(">>>")
     main_menu_result == main_menu_validate(x)
     if main_menu_result == False:
-        print("Please enter a valid input:")
-        x = input(">>>")
-        main_menu_result = main_menu_validate(x)
+        while main_menu_result == False:
+            print("Please enter a valid input:")
+            x = input(">>>")
+            main_menu_result = main_menu_validate(x)
+            
+# Returning to Main Menu
+def wiki_return_validate(x):
+    """Validates input for wiki_return(). """
+    if x in yes:
+        mainmenu()
+    elif x in no:
+        wikichat()
+    else:
+        return False
+    
+    
+def wiki_return():
+    """Returns to the mainmenu() after wikichat()"""
+    print("Would you like to return to the main menu?")
+    x = input(">>>")
+    if x == "exit":
+        print("Ahsante! Kwaheri!")
+        sys.exit()
+    elif x == "return":
+        mainmenu()
+    else:
+        wiki_validation_result = wiki_return_validate(x)
+        if wiki_validation_result == False:
+            while wiki_validation_result == False:
+                print("Please enter a valid inpyt (yes or no):")
+                x = input(">>>")
+                wiki_validate_result = wiki_return_validate(x)
+
+
+def wikichat():
+    """This function will prompt the user to enter the name of article he/she wishes to interact with from the wikipedia"""
+    print("What do you wish to learn about from the wikipedia?: ")
+    x  =  input(">>>")
+    if x == "exit":
+        print("Ahsante! Goodbye!")
+        sys.exit()
+    elif x == "help":
+        instructions()
+    elif x == "return":
+        mainmenu()
+    else:
+        wiki_validation_result = wiki_article_validate(x)
+        if wiki_validation_result == False:
+            while wiki_validation_result == False:
+                print("Please enter a valid input: ")
+                x = input(">>>")
+                wiki_validation_result = wiki_article_validate(x)
+        wiki_return()
+        
+        
+# create a weather return fucntion validation
+#create a weather return function
