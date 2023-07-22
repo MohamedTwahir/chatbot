@@ -132,4 +132,34 @@ def wikichat():
         
         
 # create a weather return fucntion validation
+def weather_return_validate(x):
+    """Validates input for the weather function"""
+    if x in yes:
+        mainmenu()
+    elif x in no:
+        weatherchat()
+    else:
+        return False
+
+
+
 #create a weather return function
+def weather_return():
+    """Takes you back to the mainmenu function"""
+    print("Do you wish to return to the main menu?")
+    x = input(">>>")
+    if x == "exit":
+        print("Ahsante sana! Kwaheri")
+        sys.exit()
+    elif x == "help":
+        instructions()
+    elif x == "return":
+        mainmenu()
+    else:
+        weather_validation_result = weather_return_validate(x)
+        if weather_validation_result == False:
+            while weather_validation_result == False:
+                print("Please enter a valid input (yes or no)")
+                x = input(">>>")
+                weather_validation_result = weather_return_validate(x)
+                
