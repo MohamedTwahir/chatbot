@@ -163,3 +163,37 @@ def weather_return():
                 x = input(">>>")
                 weather_validation_result = weather_return_validate(x)
                 
+                
+# creating functions for the stories
+def  story_return_validate(x):
+    """
+    This function will validate the input for the story return function
+    """
+    if x in yes:
+        mainmenu()
+    elif x in no:
+        intro()
+    else:
+        return False
+    
+def story_return():
+    """This function will prompt the user back to the main menu"""
+    print("Do you wish to return to the main menu?")
+    x  = input(">>>")
+    if x == "exit":
+        print("Ahsante sana!Goodbye!")
+        sys.exit()
+    elif x == "help":
+        instruuction()
+    elif x == "return":
+        mainmenu()
+    else:
+        story_validation_result = story_return_validate(x)
+        if story_validation_result == False:
+            while story_validation_result == False:
+                print("Please enter a valid input")
+                x = input(">>>")
+                story_validation_result = story_return_validate(x)
+                
+# i should create a function to receive summary of the wikipedia article 
+# i have already created wikichat (do not forget) 
