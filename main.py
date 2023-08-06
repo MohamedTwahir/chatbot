@@ -45,7 +45,7 @@ def instructions():
           I can find information about something you want to learn\n
           Retrieve current local weather\n
           Play an interactive story for you.''')
-    print("Interracting with me is queit simple you just have to enter the number of the action you want me to do from the following list")
+    print("Interracting with me is quite simple you just have to enter the number of the action you want me to do from the following list")
     
 def main_menu_validate(x):
     if x == "1":
@@ -131,7 +131,7 @@ def wikichat():
         wiki_return()
         
         
-# create a weather return fucntion validation
+# create a weather return function validation
 def weather_return_validate(x):
     """Validates input for the weather function"""
     if x in yes:
@@ -184,7 +184,7 @@ def story_return():
         print("Ahsante sana!Goodbye!")
         sys.exit()
     elif x == "help":
-        instruuction()
+        instruction()
     elif x == "return":
         mainmenu()
     else:
@@ -197,3 +197,22 @@ def story_return():
                 
 # i should create a function to receive summary of the wikipedia article 
 # i have already created wikichat (do not forget) 
+def wiki_article_validate(articlename):
+    """_summary_
+    This function will validate the input of the wikichat()
+
+    Args:
+        articlename (_type_): _description_
+    """
+    page_py = wiki_wiki.page(articlename)
+    if page_py.exists() == True:
+        print("Here you go,", name, ":")
+        pint(
+            "Page - Title: %s" %page_py.title
+        )
+        print(
+            "Page - Summary: %s" %page_py._summary
+        )
+    else:
+        return False
+    return page_py
