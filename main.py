@@ -184,7 +184,7 @@ def story_return():
         print("Ahsante sana!Goodbye!")
         sys.exit()
     elif x == "help":
-        instruction()
+        instructions()
     elif x == "return":
         mainmenu()
     else:
@@ -195,8 +195,8 @@ def story_return():
                 x = input(">>>")
                 story_validation_result = story_return_validate(x)
                 
-# i should create a function to receive summary of the wikipedia article 
-# i have already created wikichat (do not forget) 
+#  created a function to receive summary of the wikipedia article 
+
 def wiki_article_validate(articlename):
     """_summary_
     This function will validate the input of the wikichat()
@@ -206,13 +206,85 @@ def wiki_article_validate(articlename):
     """
     page_py = wiki_wiki.page(articlename)
     if page_py.exists() == True:
-        print("Here you go,", name, ":")
-        pint(
-            "Page - Title: %s" %page_py.title
-        )
-        print(
-            "Page - Summary: %s" %page_py._summary
-        )
+       print(f"Here you go, {name}:\nPage - Title: {page_py.title}\nPage - Summary: {page_py._summary}")
+ 
     else:
         return False
     return page_py
+
+# functions for local weather report
+def localweather(place):
+    """This function will validate if the location inputed is real or just some random location
+
+    Args:
+        place  will server as an input x value 
+    """
+    mgr = owm.weather_manager()
+    try:
+        observation = mgr.weather_at_place(place)
+    except:
+        return False
+    w = observation.weather
+    print("Temperature: {}°C\nMax Temperature: {}°C\nMin Temperature: {}°C\nFeels Like: {}°C\nHumidity: {}%\nWind Speed: {}M/s\nWind Direction: {}°".format(
+    w.temperature('celsius')["temp"],
+    w.temperature('celsius')["temp_max"],
+    w.temperature('celsius')["temp_min"],
+    w.temperature('celsius')["feels_like"],
+    w.humidity,
+    w.wind()["speed"],
+    w.wind()["deg"]
+    ))
+    
+def weather():
+    """
+    with this function the user will be prompted to enter the name of the city afterwards another function will have to run to validate it
+    
+    """
+    x = input("Enter the city that you want the weather of:\n >>> ")
+    local_weather_validation = localweather(x)
+    if local_weather_validation == False:
+        while local_weather_validation == False:
+            x = input("Please enter an exact city name:")
+            local_weather_validation = localweather(x)
+
+
+def weather_chat_validate(x):
+    """
+    After an input has been given to the waetherchat function this will validate it
+
+    Args:
+        x (choice): The selection of the user of what wants to be done in the weatherchat()
+    """
+    if x == "1":
+        ip = urllib.request.urlopen('https://ip.42.pl/raw').read().decode('utf8')
+        location = geo_lookup.get_location(ip)
+        weatherlocation = location["city"]
+        print(f"Here is your weather for{weatherlocation}(Powered by OpenWeathermap)")
+        localweather(weatherlocation)
+    elif x == "2":
+        if __name__ == '__main__':
+            weather()
+    else:
+        return False
+    
+# main function for the weather
+
+def weatherchat():
+    """This function will have the user choose whether to input location manually or automatically
+    """
+    
+    x = input("Do you want me to retrieve your location, or do you want to manually enter your location? (Powered by OpenWeatherMap)\n[1] Automatically Retrieve Location*\n[2] Manually Enter Location\n*If you use a cloud-based interpreter, I will not be able to find the proper IP address of your computer, and thus I will not return the proper weather for your location.\nPlease run this action on a local machine for full functionality.\nAlso, be sure to turn off your VPN or Internet Proxy if you have one on for accurate results.\n>>> ")
+    if x == "exit":
+        print("Ahsante! Kwaheri!")
+        sys.exit()
+    elif x == "help":
+        instructions()
+    elif x == "return":
+        mainmenu()
+    else:
+        weather_chat_validate = weather_chat_validate(x)
+        if weather_chat_validation == False:
+            while weather_chat_validation == False:
+                x = input("Please enter a valid input:\n >>> ")
+                weather_chat_validation = weather_chat_validate(x)
+        weather_return()
