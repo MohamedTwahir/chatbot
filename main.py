@@ -1,6 +1,6 @@
 # Importing statements and API Initialization
 import wikipediaapi
-wiki_wiki = wikipediaapi.Wikipedia('en')
+wiki_wiki = wikipediaapi.Wikipedia('english')
 
 
 #Initializing OpenWeatherMap API
@@ -44,8 +44,8 @@ def instructions():
     print('''I am your virtual assistant with wide feature set:\n
           I can find information about something you want to learn\n
           Retrieve current local weather\n
-          Play an interactive story for you.''')
-    print("Interracting with me is quite simple you just have to enter the number of the action you want me to do from the following list")
+          Play an interactive story for you.\n
+          Interracting with me is quite simple you just have to enter the number of the action you want me to do from the following list''')
     
 def main_menu_validate(x):
     if x == "1":
